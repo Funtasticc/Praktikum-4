@@ -1,43 +1,46 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 int main()
 {
+	string text = "", output = "";
+	char c = 0;
+	int v = 0;
 
-	string eingabe;
-	unsigned int v, length;
 
 	cout << "Bitte geben Sie den zu verschluesselnden Text ein: ";
-	getline(cin, eingabe);
+	getline(cin, text);
+
 	cout << "Bitte geben Sie die Anzahl Verschiebepositionen ein (als positive ganze Zahl): ";
 	cin >> v;
 
-	length = eingabe.length();
-	for (int i = 0; i < length; i++)
+	while (v > 26) 
+	v -= 26;
+
+	for (int i = 0; i < text.length(); i++)
 	{
-		int c = int(eingabe[i]), basis;
+		c = text[i];
 
-		if (c >= int('a') && c <= int('z'))
+		if (c >= 'A' && c <= 'Z')
 		{
-			basis = int('a');
+			c = c + v;
 
+			while (c > 'Z') c -= 26;
+			output += c;
 		}
-		else if (c >= int('A') && c <= int('Z'))
+		else if (c >= 'a' && c <= 'z')
 		{
-			basis = int('A');
-		}
-		else
-		{
-			continue;
-		}
-	
-		c += (v - basis);
-		c %= 26;
-		eingabe[i] = char(basis + c);
-		}
+			c = c + v;
 
-	cout << eingabe << endl;
-		system("PAUSE");
-		return 0;
+			while (c > 'z') c -= 26;
+			output += c;
+		}
+		else output += c;
+	}
+	cout << output << endl;
+	system("pause");
+
+	return 0;
 }
