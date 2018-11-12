@@ -8,21 +8,22 @@ int main()
 	do {
 		cout << "Bitte geben Sie die Stunden der Startuhrzeit ein: ";
 		cin >> ssu;
-	} while (ssu < 0 || ssu > 23);
+	} while (ssu < 0 || ssu >= 24);
 
 	do {
 		cout << "Bitte geben Sie die Minuten der Startuhrzeit ein: ";
 		cin >> msu;
-	} while (msu < 0 || msu > 59);
+	} while (msu < 0 || msu >= 59);
 
 	cout << "Der erste Bus faehrt also um " << ssu << ":" << msu << " Uhr." << endl;
 
 	do {
 		cout << "Bitte geben Sie die Taktzeit in Minuten ein: ";
 		cin >> takt;
-	} while (takt < 1 || takt > 180);
+	} while (takt <= 0 || takt > 180);
 
-	while (ssu < 24) {
+	while (ssu < 24) 
+	{
 		while (msu < 60) {
 			cout << ssu << ":" << msu << " ";
 			msu += takt;
