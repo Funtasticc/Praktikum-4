@@ -25,7 +25,7 @@ int main()
 	while (ssu < 24) {
 		while (msu < 60) {
 			cout << ssu << ":" << msu << " ";
-			fun += takt;
+			msu += takt;
 		}
 
 		while (msu >= 60) {
