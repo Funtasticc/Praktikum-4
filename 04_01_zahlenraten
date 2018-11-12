@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	
+	char antwort;
+
+	cout << "Merken Sie sich eine Zahl zwischen 1 (inklusive) und 100 (exklusive)" << endl;
+
+	for (int i = 0, min = 1, max = 100, bisektion = 50; i <= 1000; i++)
+	{
+		
+		cout << "Aktueller Ratebereich : " << min << " bis " << max << endl;
+		cout << "Ist " << bisektion << " ihre Zahl ?" << endl;
+		cout << "(j)ja : gleich," << endl;
+		cout << "(k)nein : meine Zahl ist kleiner," << endl;
+		cout << "(g)nein : meine Zahl ist groesser." << endl;
+
+		cout << "? ";
+		cin >> antwort;
+
+		if (antwort == 'j')
+		{
+			system("PAUSE");
+			return 0;
+		}
+
+		else if (antwort == 'k')
+		{
+			max = max / 2;
+			bisektion = (max + min) / 2;
+		}
+
+		else if (antwort == 'g')
+		{
+			min = bisektion;
+			bisektion = (max + min) / 2;
+		}
+	}
+}
